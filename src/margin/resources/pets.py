@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -15,7 +15,7 @@ from ..types import (
     pet_upload_image_params,
     pet_find_by_status_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -59,7 +59,7 @@ class PetsResource(SyncAPIResource):
         self,
         *,
         name: str,
-        photo_urls: List[str],
+        photo_urls: SequenceNotStr[str],
         id: int | NotGiven = NOT_GIVEN,
         category: CategoryParam | NotGiven = NOT_GIVEN,
         status: Literal["available", "pending", "sold"] | NotGiven = NOT_GIVEN,
@@ -139,7 +139,7 @@ class PetsResource(SyncAPIResource):
         self,
         *,
         name: str,
-        photo_urls: List[str],
+        photo_urls: SequenceNotStr[str],
         id: int | NotGiven = NOT_GIVEN,
         category: CategoryParam | NotGiven = NOT_GIVEN,
         status: Literal["available", "pending", "sold"] | NotGiven = NOT_GIVEN,
@@ -256,7 +256,7 @@ class PetsResource(SyncAPIResource):
     def find_by_tags(
         self,
         *,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -407,7 +407,7 @@ class AsyncPetsResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        photo_urls: List[str],
+        photo_urls: SequenceNotStr[str],
         id: int | NotGiven = NOT_GIVEN,
         category: CategoryParam | NotGiven = NOT_GIVEN,
         status: Literal["available", "pending", "sold"] | NotGiven = NOT_GIVEN,
@@ -487,7 +487,7 @@ class AsyncPetsResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        photo_urls: List[str],
+        photo_urls: SequenceNotStr[str],
         id: int | NotGiven = NOT_GIVEN,
         category: CategoryParam | NotGiven = NOT_GIVEN,
         status: Literal["available", "pending", "sold"] | NotGiven = NOT_GIVEN,
@@ -604,7 +604,7 @@ class AsyncPetsResource(AsyncAPIResource):
     async def find_by_tags(
         self,
         *,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
