@@ -327,6 +327,7 @@ class TestPets:
     def test_method_upload_image(self, client: Margin) -> None:
         pet = client.pets.upload_image(
             pet_id=0,
+            image=b"raw file contents",
         )
         assert_matches_type(PetUploadImageResponse, pet, path=["response"])
 
@@ -345,6 +346,7 @@ class TestPets:
     def test_raw_response_upload_image(self, client: Margin) -> None:
         response = client.pets.with_raw_response.upload_image(
             pet_id=0,
+            image=b"raw file contents",
         )
 
         assert response.is_closed is True
@@ -357,6 +359,7 @@ class TestPets:
     def test_streaming_response_upload_image(self, client: Margin) -> None:
         with client.pets.with_streaming_response.upload_image(
             pet_id=0,
+            image=b"raw file contents",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -677,6 +680,7 @@ class TestAsyncPets:
     async def test_method_upload_image(self, async_client: AsyncMargin) -> None:
         pet = await async_client.pets.upload_image(
             pet_id=0,
+            image=b"raw file contents",
         )
         assert_matches_type(PetUploadImageResponse, pet, path=["response"])
 
@@ -695,6 +699,7 @@ class TestAsyncPets:
     async def test_raw_response_upload_image(self, async_client: AsyncMargin) -> None:
         response = await async_client.pets.with_raw_response.upload_image(
             pet_id=0,
+            image=b"raw file contents",
         )
 
         assert response.is_closed is True
@@ -707,6 +712,7 @@ class TestAsyncPets:
     async def test_streaming_response_upload_image(self, async_client: AsyncMargin) -> None:
         async with async_client.pets.with_streaming_response.upload_image(
             pet_id=0,
+            image=b"raw file contents",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
